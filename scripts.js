@@ -1,6 +1,16 @@
 
 
-function computerPlay() {
+
+
+function playerSelection() {
+    let playerChoice = prompt("Please type your choice");
+    playerChoice = playerChoice.toLowerCase();
+    console.log(playerChoice);
+    return playerChoice;
+}
+
+
+function computerSelection() {
 
     let computerRandom = Math.floor(Math.random()*(3-1+1))+1;
     console.log(computerRandom);
@@ -21,5 +31,7 @@ function computerPlay() {
             break;
     }
 
+    computerChoice = computerChoice.toLowerCase();
     console.log(computerChoice);
+    return computerChoice;
 }
