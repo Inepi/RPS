@@ -1,18 +1,22 @@
 
+const buttons = document.querySelectorAll('.container button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id);
+    });
+});
+
 function playerPlay() {
     let playerChoice = prompt("Please type your choice");
     playerSelection = playerChoice.toLowerCase();
     return playerSelection;
 }
 
-
 function computerPlay() {
-
     let computerRandom = Math.floor(Math.random()*(3-1+1))+1;
     computerRandom = computerRandom.toString();
     let computerChoice;
-    
-
     switch (computerRandom) {
         case '1':
             computerChoice = "Rock";
@@ -24,12 +28,12 @@ function computerPlay() {
             computerChoice = "Scissors";
             break;
     }
-
     computerSelection= computerChoice.toLowerCase();
     return computerSelection;
 }
 
-function playRound (playerSelection, computerSelection) {
+function playRound (playerSelection) {
+    computerPlay();
     let playerVictory;
     switch (playerSelection) {
         case 'rock':
@@ -77,7 +81,7 @@ function playRound (playerSelection, computerSelection) {
     return playerVictory;
 }
 
-function game() {
+/*function game() {
     let playerWins = 0;
     let computerWins = 0;
     for (let i = 0; i < 5; i++) {
@@ -107,4 +111,4 @@ function game() {
         playerWins = 0;
         computerWins = 0;
     }
-}
+} */
