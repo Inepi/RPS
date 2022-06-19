@@ -1,6 +1,8 @@
 
-const buttons = document.querySelectorAll('.container button');
+playerWins = 0;
+computerWins = 0;
 
+const buttons = document.querySelectorAll('.container button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playRound(button.id);
@@ -34,7 +36,7 @@ function computerPlay() {
 
 function playRound (playerSelection) {
     computerPlay();
-    let playerVictory;
+    let victor;
     switch (playerSelection) {
         case 'rock':
             if (computerSelection == 'rock') {
@@ -42,21 +44,21 @@ function playRound (playerSelection) {
             }
             else if (computerSelection == 'scissors') {
                 console.log("Rock beats Scissors, you win!");
-                playerVictory = "true";
+                victor = "true";
             }
             else if (computerSelection == 'paper') {
                 console.log("Paper beats Rock, you lose!");
-                playerVictory = "false";
+                victor = "false";
             }
             break;
         case 'paper':
             if (computerSelection == 'rock') {
                 console.log("Paper beats Rock, you win!")
-                playerVictory = "true";
+                victor = "true";
             }
             else if (computerSelection == 'scissors') {
                 console.log("Scissors beats Paper, you lose!");
-                playerVictory = "false";
+                victor = "false";
             }
             else if (computerSelection == 'paper') {
                 console.log("You both picked Paper! It's a tie.");
@@ -65,20 +67,30 @@ function playRound (playerSelection) {
         case 'scissors':
             if (computerSelection == 'rock') {
                 console.log("Rock beats Scissors, you lose!")
-                playerVictory = "false";
+                victor = "false";
             }
             else if (computerSelection == 'scissors') {
                 console.log("You both picked Scissors. It's a tie!");
             }
             else if (computerSelection == 'paper') {
                 console.log("Scissors beats Paper, you win!");
-                playerVictory = "true";
+                victor = "true";
             }
             break;
         default:
             console.log("Something went wrong. The player probably entered something they shouldn't have");
     }
-    return playerVictory;
+    resultsTally(victor);
+    return victor;
+}
+
+function resultsTally(victor) {
+    if (victor == "true") {
+        playerWins++;
+    }
+    else if (victor == "false") {
+        computerWins++;
+    }
 }
 
 /*function game() {
